@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
   </div>
 
-  <!-- NAVBAR -->
+  
 
   <?php require "partials/_nav.php"?>
 
@@ -115,38 +115,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if ($insert) {
     echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>Success!</strong> Your task has been inserted successfully!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    </div>';
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
   }
   ?>
 
   <!-- alert for successful updation -->
   <?php
   if ($update) {
-    echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>Success!</strong> Your task has been updated successfully!
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>';
+</div>';
   }
   ?>
 
   <!-- alert for successful deletion -->
   <?php
   if ($delete) {
-    echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>Success!</strong> Your task has been deleted successfully!
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>';
+</div>';
   }
   ?>
 
   <!-- alert for unsuccessful work -->
   <?php
   if ($no) {
-    echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>Error!</strong> We are facing some technical issues. We regret the inconvinience caused!
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>';
+</div>';
   }
   ?>
   <!-- main form with add button -->
@@ -164,86 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <button type="submit" class="btn btn-info">Add Task</button><hr>
     </form>
   </div>
-  <div class="container mt-4 my-3">
-    <table class="table table-striped table-sm " id="myTable">
-      <thead>
-        <tr>
-          <th scope="col">Sno</th>
-          <th scope="col">Task</th>
-          <th scope="col">Description</th>
-          <th scope="col">Date</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- fetch all records from the database to the table -->
-        <?php
-        $sql = "SELECT * FROM `tasks`";
-        $result = mysqli_query($conn, $sql);
-        $sno = 0;
-        while ($row = mysqli_fetch_assoc($result)) {
-          $sno = $sno + 1;
-          echo "<tr>
-            <th scope='row'>" . $sno . "</th>
-            <td>" . $row['Task'] . "</td>
-            <td>" . $row['Description'] . "</td>
-            <td>" . $row['timestamp'] . "</td>
-            <td> 
-              <button class=' edit btn btn-sm btn-success' id=" . $row['sno'] . " >Edit</button>
-              <button class=' delete btn btn-sm btn-danger' id=d" . $row['sno'] . " >Delete</button> 
-            </td>
-          </tr>";
-        }
-        ?>
-      </tbody>
-    </table>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
   
-  <!-- Jquery for datatables -->
-  <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>  
-  <script>
-    $(document).ready(function() {
-      $('#myTable').DataTable();
-    })
-  </script>
-  
-  <!-- backend javascript -->
-  <script>
-    // event listener for edit button
-    edits = document.getElementsByClassName('edit');
-    Array.from(edits).forEach((element) => {
-      element.addEventListener('click', (e) => {
-        console.log('edit', );
-        tr = e.target.parentNode.parentNode;                                             //fetch single row
-        title = tr.getElementsByTagName("td")[0].innerText;                              //fetch title from row
-        description = tr.getElementsByTagName("td")[1].innerText;                        //fetch description from row
-        console.log(title, description);                                                 //print title and description
-        DescriptionEdit.value = description;                                             //set id=DescriptionEdit of modal form to fetched description.
-        TaskEdit.value = title;                                                          //set id=TaskEdit of modal form to fetched task.
-        snoEdit.value = e.target.id;                                                     //set the sno
-        console.log(e.target.id);
-        $('#editModal').modal('toggle');                                                 //trigger the modal form to open with jquery
-      })
-    })
-
-    // event listener for delete button
-    deletes = document.getElementsByClassName('delete');
-    Array.from(deletes).forEach((element) => {
-      element.addEventListener('click', (e) => {
-        console.log('delete', );
-        sno = e.target.id.substr(1, );
-        if (confirm('Are you sure you want to delete this task?')) {                     //pop-up confirmation box
-          window.location = `/CRUD/index.php?delete=${sno}`;
-          console.log('y');
-        } else {
-          console.log('n');
-        }
-      })
-    })
-  </script>
 </body>
 </html>
