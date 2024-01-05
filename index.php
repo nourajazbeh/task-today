@@ -67,47 +67,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <title>To-Do List</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+  <style>
+    h1{
+      margin: 20px;
+      padding: 10px;
+      text-align: center;
+      text-transform: capitalize;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 
 <body>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="editModalLabel">Edit Task</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-          <!-- modal form -->
-        <form action="/CRUD/index.php" method="post">    
-          <div class="modal-body">
-            <input type="hidden" name="snoEdit" id="snoEdit">
-            
-
-            <div class="mb-5">
-              <label for="Task" class="form-label"><strong>Task</strong></label>
-              <input type="text" class="form-control" id="TaskEdit" name="TaskEdit" aria-describedby="emailHelp">
-            </div>
-
-            <div class="mb-3">
-              <label for="Description" class="form-label"><strong>Description</strong></label>
-              <textarea class="form-control" id="DescriptionEdit" name="DescriptionEdit" rows="5"></textarea>
-            </div>
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
-          </div>
-
-        </form>
-      </div>
-    </div>
-  </div>
-
-  
-
   <?php require "partials/_nav.php"?>
 
   <!-- alert for successful insertion -->
@@ -120,39 +91,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
   ?>
 
-  <!-- alert for successful updation -->
-  <?php
-  if ($update) {
-    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Success!</strong> Your task has been updated successfully!
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>';
-  }
-  ?>
-
-  <!-- alert for successful deletion -->
-  <?php
-  if ($delete) {
-    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Success!</strong> Your task has been deleted successfully!
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>';
-  }
-  ?>
-
-  <!-- alert for unsuccessful work -->
-  <?php
-  if ($no) {
-    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Error!</strong> We are facing some technical issues. We regret the inconvinience caused!
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>';
-  }
-  ?>
+  
   <!-- main form with add button -->
   <div class="container mt-4">
     <form action="/CRUD/index.php" method="post">
-      <h2>TASK_TODAY</h2>
+      <h1>TASK_TODAY</h1>
       <div class="mb-5">
         <label for="Task" class="form-label"><strong>Task</strong></label>
         <input type="text" class="form-control" id="Task" name="Task" aria-describedby="emailHelp">
