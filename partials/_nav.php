@@ -12,20 +12,7 @@
             <a class="nav-link active" aria-current="page" href="/CRUD/index.php"><strong>Home</strong></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="tasks.php">All Tasks</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">To-Do today</a></li>
-              <li><a class="dropdown-item" href="#">To-Do This Week</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Completed Tasks</a></li>
-            </ul>
+            <a class="nav-link active" href="task.php">All Tasks</a>
           </li>
         </ul>
         <form class="d-flex" role="search">
