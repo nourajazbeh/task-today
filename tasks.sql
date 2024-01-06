@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2023 at 10:53 AM
+-- Generation Time: Jan 06, 2024 at 10:35 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.2.34
 
@@ -39,9 +39,17 @@ CREATE TABLE `tasks` (
 --
 
 INSERT INTO `tasks` (`sno`, `Task`, `Description`, `timestamp`) VALUES
-(29, 'test task', 'easa', '2023-12-13'),
-(30, 'asas', 'Adf', '2023-12-13'),
-(31, 'ewfdsz', 'sdfzsfwa', '2023-12-13');
+(32, 'test task', 'complete hw', '2024-01-05'),
+(35, 'test task2', 'hw2', '2024-01-05'),
+(36, 'test task3', 'hw3', '2024-01-05'),
+(37, '2024', 'github contributions', '2024-01-05'),
+(38, 'task_today', 'modifications', '2024-01-05'),
+(39, 'study', 'acdemic validation', '2024-01-05'),
+(40, 'fitness', 'go to gym and be in good shape', '2024-01-05'),
+(41, 'co-curricular activities', 'fashion show ', '2024-01-05'),
+(42, 'co-curricular activities', 'join a dance team', '2024-01-05'),
+(44, 'test task', 'qwerty', '2024-01-06'),
+(45, 'test task 3', '', '2024-01-06');
 
 --
 -- Indexes for dumped tables
@@ -61,7 +69,7 @@ ALTER TABLE `tasks`
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
